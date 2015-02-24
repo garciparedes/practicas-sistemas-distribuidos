@@ -5,15 +5,14 @@
 
 package hilosjava;
 
-/**
- *
- * @author cllamas
- */
+
 public class Consumidor implements Runnable {
     private final ColaStrings cola ;
+    private final String id;
 
-    public Consumidor(ColaStrings c) {
+    public Consumidor(ColaStrings c, String id) {
         this.cola = c;
+        this.id = id;
     }
 
     public void run() {
@@ -21,7 +20,7 @@ public class Consumidor implements Runnable {
 
         while (true) {
             linea = cola.pop();
-            System.out.println(">> " + linea); // imprime
+            System.out.println(">> " + linea + " " + id ); // imprime
         }
     }
 }

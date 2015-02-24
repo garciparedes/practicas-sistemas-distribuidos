@@ -1,0 +1,6 @@
+package clienteservidor;
+
+public class Sirviente implements Runnable{
+
+	public static final int PUERTO = 2000;
+}
