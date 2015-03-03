@@ -1,0 +1,19 @@
+package clienteservidor;
+
+import java.net.*;
+import java.io.*;
+
+public class Sirviente implements Runnable{
+
+	public static final int PUERTO = 2000;
+	private Socket sock;
+	
+	public Sirviente(Socket sock){
+		this.sock = sock;
+	}
+
+	@Override
+	public void run() {
+		
+	}
+}
