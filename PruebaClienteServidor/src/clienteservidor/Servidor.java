@@ -14,7 +14,7 @@ public class Servidor {
 
         for (;;) {
             System.out.println("----Servidor aceptando conexiones----");
-        	new Thread(new Sirviente(servidor.accept())).start();
+        		new Thread(new Sirviente(servidor.accept())).start();
         }
     }
 }
