@@ -8,6 +8,8 @@ public enum Primitive {
 	PUSH_OK(false),
 	NOTHING(false),
 	PULL_OK(true),
+	SIZE(false),
+	SIZE_OK(true),
 	NOTUNDERSTAND(false);
 
 	/* msg: TRue significa que le acompaña mensaje, y false que no. */

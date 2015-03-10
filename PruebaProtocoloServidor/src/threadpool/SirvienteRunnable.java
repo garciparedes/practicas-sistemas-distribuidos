@@ -5,6 +5,8 @@ import java.io.*;
 import java.net.*;
 import java.util.concurrent.*;
 
+import protocolo.ExceptionFaltaMensaje;
+import protocolo.ExceptionSobraMensaje;
 import protocolo.MensajeProtocolo;
 import protocolo.Primitive;
 
@@ -64,6 +66,10 @@ class SirvienteRunnable implements Runnable {
 						ms = new MensajeProtocolo(Primitive.PULL_OK, cola.pop());
 						break;
 						
+					case SIZE:
+						ms = new MensajeProtocolo(Primitive.SIZE_OK, cola.size());
+						break;
+						
 					default:
 						ms = new MensajeProtocolo(Primitive.NOTUNDERSTAND);
 						
@@ -79,6 +85,12 @@ class SirvienteRunnable implements Runnable {
 		} catch (ClassNotFoundException ex) {
 			System.err.println("Clase MensajeProtocolo no encontrada");
 			
+		} catch (ExceptionSobraMensaje e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExceptionFaltaMensaje e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		} finally {
 			/* seguimos deshaciéndonos de los sockets y canales abiertos. */
 			try {

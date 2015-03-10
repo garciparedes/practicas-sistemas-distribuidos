@@ -27,6 +27,12 @@ public class Servidor {
 				exec.execute(new SirvienteRunnable(s, cola));
 			}
 		} catch (IOException ioe) {
+			
+			exec.shutdown();
+			try{
+				exec.awaitTermination(1000, TimeUnit.MILLISECONDS);
+			} catch(InterruptedException ie){}
+			while(!exec.isTerminated()){}
 			System.err.println("Servidor: Error de E/S: "+ioe);
 		}
 	}

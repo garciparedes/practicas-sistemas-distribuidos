@@ -21,5 +21,9 @@ public class ColaStrings {
 	public boolean estaVacia() {
 		return lista.isEmpty();
 	}
+	
+	public int size() {
+		return lista.size();
+	}
 }
 
