@@ -2,24 +2,34 @@ package client;
 
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.rmi.Naming;
+import server.Hello;
+import server.MyPruebaException;
 
 public class Client {
-   private Client () { }
+	private Client () { }
 
-   public static void main(String [ ] args) {
-      String host = (args.length < 1) ? null : args[0];
-      try {
-         /* OBSOLETO: Esto está un poco rancio,
-            Registry registro = LocateRegistry.getRegistry(host);
-            Hello stub = (Hello) registro.lookup(***);
-          */
-         Hello stub = (Hello) Naming.lookup(***); /* ¿Qué hay aquí?*/
+	public static void main(String [ ] args) {
 
-         String respuesta = stub.sayHello();
-         System.out.println("[Respuesta: "+respuesta+"]");
-      } catch (Exception e) {
-         System.err.println("<Cliente: Excepcion: "+e);
-         e.printStackTrace();
-      }
-   }
+		String host = (args.length < 1) ? null : args[0];
+
+		try {
+			Hello stub = (Hello) Naming.lookup(host); 
+
+			String respuesta = stub.sayHello();
+			System.out.println("[Respuesta: "+respuesta+"]");
+
+			try {
+				stub.pruebaExcepcion(false);
+				stub.pruebaExcepcion(true);
+
+			} catch(MyPruebaException e){
+				System.err.println(e.getMessage());
+			}
+
+		} catch (Exception e) {
+			System.err.println("<Cliente: Excepcion: "+e);
+			e.printStackTrace();
+		}
+	}
 }
