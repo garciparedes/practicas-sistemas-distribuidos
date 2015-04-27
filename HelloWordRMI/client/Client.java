@@ -12,6 +12,18 @@ public class Client {
 	public static void main(String [ ] args) {
 
 		String host = (args.length < 1) ? null : args[0];
+		
+		String hostName = "127.0.0.1";
+		String port = "1099";
+		String SERVICE_NAME = "HelloObjeto";
+		
+		/*
+		String service= (
+			"//" + hostName 
+			+ ":" + port 
+			+ "/" + SERVICE_NAME
+		);
+		*/
 
 		try {
 			Hello stub = (Hello) Naming.lookup(host); 
