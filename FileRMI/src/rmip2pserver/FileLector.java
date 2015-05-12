@@ -1,6 +1,7 @@
-package fileserver;
+package rmip2pserver;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
@@ -8,7 +9,7 @@ import java.rmi.RemoteException;
  * Interfaz para leer secuencialmente las líneas de un archivo de texto.
  * @author cllamas
  */
-public interface FileLector extends Remote {
+public interface FileLector extends Remote, Serializable {
     /**
      * Utiliza BufferedReader.readline() para leer líneas del archivo.
      * @return String con la línea actual del archivo.

@@ -1,0 +1,5 @@
+Fichero de prueba para comprobar que funciona.
+Este fichero es accesible desde otros ordenador accediendo al puerto e ip correctas,
+junto con el nombre "SergioGarciaPrado".
+
+EXITO!!

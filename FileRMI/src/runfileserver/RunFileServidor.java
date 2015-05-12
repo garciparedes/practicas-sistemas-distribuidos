@@ -4,8 +4,8 @@ import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
-import fileserver.FileServidor;
-import fileserver.FileServidorImpl;
+import rmip2pserver.FileSearch;
+import rmip2pserver.FileSearchImpl;
 
 /**
  * Lanza el objeto remoto ObjetoFileServidor de tipo FileServidor.
@@ -14,12 +14,12 @@ import fileserver.FileServidorImpl;
 public class RunFileServidor {
     public static void main(String[] args) {
         try {
-        FileServidor cc = new FileServidorImpl();
+        FileSearch fs = new FileSearchImpl();
 
         Registry registro = LocateRegistry.createRegistry(1099);
 
-        registro.rebind("ObjetoFileServidor", cc);
-        System.out.println("Objeto remoto 'ObjetoFileServidor' enlazado");
+        registro.rebind("MasterIndex", fs);
+        System.out.println("Objeto remoto 'MasterIndex' enlazado");
         } catch (RemoteException re) {
             re.printStackTrace(System.err);
         } catch (Exception e) {
